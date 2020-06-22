@@ -1,14 +1,33 @@
-image: ruby
+image: ruby:2.7
+
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+cache:
+  paths:
+  - vendor/
+
+before_script:
+  - gem install bundler
+  - bundle install --path vendor
+
+test:
+  stage: test
+  script:
+  - bundle exec jekyll build -d test
+  artifacts:
+    paths:
+    - test
+  rules:
+    - if: '$CI_COMMIT_BRANCH != "master"'
 
 pages:
   stage: deploy
   script:
-  - gem install jekyll
-  - jekyll build -d public
-  - gem build lens_jekyll_theme.gemspec
+  - bundle exec jekyll build -d public
   artifacts:
     paths:
     - public
-    - "lens_jekyll_theme-*.gem"
-  only:
-  - master
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
