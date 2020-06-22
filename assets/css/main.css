@@ -872,6 +872,8 @@
 
 				#thumbnails article .thumbnail img {
 					display: block;
+					height: 125px;
+					object-fit: cover;
 					width: 100%;
 				}
 
