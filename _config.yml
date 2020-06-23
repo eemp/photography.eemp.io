@@ -1,6 +1,6 @@
 # Site settings
-title: Personal Photography
-description: Mihir's Personal Photography Share
+title: Personal Photography Share
+description: Mihir's personal photography share
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://photography.eemp.io" # the base hostname & protocol for your site
 author: Mihir Patel
